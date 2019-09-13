@@ -47,9 +47,25 @@ type Query {
     book(id: ID! @eq): Book! @find
 
     booksByFeatured(featured: Boolean! @eq): [Book!]! @all
+    someComplexQuery(search: String!): [Book!]!
 
     categories: [Category!]! @all
     category(id: ID! @eq): Category! @find
+}
+
+type Mutation {
+    createCategory(
+        name: String! @rules(apply: ["required", "unique:categories,name"])
+    ): Category! @create(model: "App\\Category")
+
+    updateCategory(
+        id: ID! @rules(apply: ["required"])
+        name: String! @rules(apply: ["required", "unique:categories,name"])
+    ): Category! @update(model: "App\\Category")
+
+    deleteCategory(
+        id: ID! @rules(apply: ["required"])
+    ): Category! @delete
 }
 
 type Book {

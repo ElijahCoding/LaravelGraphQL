@@ -46,6 +46,8 @@ type Query {
     books: [Book!]! @all
     book(id: ID! @eq): Book! @find
 
+    booksByFeatured(featured: Boolean! @eq): [Book!]! @all
+
     categories: [Category!]! @all
     category(id: ID! @eq): Category! @find
 }

@@ -25,3 +25,7 @@ Route::get('/guzzle', function () {
     
     dd(json_decode($response->getBody()->getContents()));
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

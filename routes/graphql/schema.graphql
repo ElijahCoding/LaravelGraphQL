@@ -1,111 +1,110 @@
-# """This is a custom built-in Scalar type from LightHouse. It handles Carbon dates"""
-# scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
-#
-#
-# type User {
-#     id: ID!
-#     name: String!
-#     email: String!
-#     created_at: DateTime!
-#     updated_at: DateTime!
-#     posts: [Post] @hasMany
-# }
-#
-# type Post {
-#     id: ID!
-#     title: String!
-#     content: String!
-#     user: User! @belongsTo
-#     comments: [Comment] @hasMany
-# }
-#
-# type Comment {
-#     id: ID!
-#     reply: String!
-#     post: Post! @belongsTo
-# }
-#
-# type Query {
-#     posts: [Post] @all
-#     post (id: Int! @eq): Post @find
-#     users: [User!]! @all
-#     user (id: Int! @eq): User @find
-#     latestPost: Post!
-# }
-#
-# type Mutation {
-#     createUser (
-#         name: String! @rules(apply: ["required", "min:4"]),
-#         email: String! @rules(apply: ["email", "unique:users"]),
-#         password: String! @rules(apply: ["min:4"]) @bcrypt
-#     ): User! @create
-# }
-#
+"""This is a custom built-in Scalar type from LightHouse. It handles Carbon dates"""
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+    posts: [Post] @hasMany
+}
+
+type Post {
+    id: ID!
+    title: String!
+    content: String!
+    user: User! @belongsTo
+    comments: [Comment] @hasMany
+}
+
+type Comment {
+    id: ID!
+    reply: String!
+    post: Post! @belongsTo
+}
 
 type Query {
-    books: [Book!]! @all
-    book(id: ID! @eq): Book! @find
-
-    booksByFeatured(featured: Boolean! @eq): [Book!]! @all
-    someComplexQuery(search: String!): [Book!]!
-
-    categories: [Category!]! @all
-    category(id: ID! @eq): Category! @find
+    posts: [Post] @all
+    post (id: Int! @eq): Post @find
+    users: [User!]! @all
+    user (id: Int! @eq): User @find
+    latestPost: Post!
 }
 
 type Mutation {
-    createCategory(
-        name: String! @rules(apply: ["required", "unique:categories,name"])
-    ): Category! @create(model: "App\\Category")
-
-    updateCategory(
-        id: ID! @rules(apply: ["required"])
-        name: String! @rules(apply: ["required", "unique:categories,name"])
-    ): Category! @update(model: "App\\Category")
-
-    deleteCategory(
-        id: ID! @rules(apply: ["required"])
-    ): Category! @delete
-
-    createBook(
-        title: String! @rules(apply: ["required"])
-        author: String! @rules(apply: ["required"])
-        image: String
-        link: String
-        description: String
-        featured: Boolean
-        category: Int!
-    ): Book! @create(model: "App\\Book")
-
-    updateBook(
-        id: ID @rules(apply: ["required"])
-        title: String! @rules(apply: ["required"])
-        author: String! @rules(apply: ["required"])
-        image: String
-        link: String
-        description: String
-        featured: Boolean
-        category: Int!
-    ): Book @update
-
-    deleteBook(
-        id: ID! @rules(apply: ["required"])
-    ): Book @delete
+    createUser (
+        name: String! @rules(apply: ["required", "min:4"]),
+        email: String! @rules(apply: ["email", "unique:users"]),
+        password: String! @rules(apply: ["min:4"]) @bcrypt
+    ): User! @create
 }
-
-type Book {
-    id: ID!
-    title: String!
-    author: String!
-    image: String
-    link: String
-    description: String
-    featured: Boolean
-    category: Category! @belongsTo
-}
-
-type Category {
-    id: ID!
-    name: String!
-    books: [Book!]! @hasMany
-}
+#
+#
+# type Query {
+#     books: [Book!]! @all
+#     book(id: ID! @eq): Book! @find
+#
+#     booksByFeatured(featured: Boolean! @eq): [Book!]! @all
+#     someComplexQuery(search: String!): [Book!]!
+#
+#     categories: [Category!]! @all
+#     category(id: ID! @eq): Category! @find
+# }
+#
+# type Mutation {
+#     createCategory(
+#         name: String! @rules(apply: ["required", "unique:categories,name"])
+#     ): Category! @create(model: "App\\Category")
+#
+#     updateCategory(
+#         id: ID! @rules(apply: ["required"])
+#         name: String! @rules(apply: ["required", "unique:categories,name"])
+#     ): Category! @update(model: "App\\Category")
+#
+#     deleteCategory(
+#         id: ID! @rules(apply: ["required"])
+#     ): Category! @delete
+#
+#     createBook(
+#         title: String! @rules(apply: ["required"])
+#         author: String! @rules(apply: ["required"])
+#         image: String
+#         link: String
+#         description: String
+#         featured: Boolean
+#         category: Int!
+#     ): Book! @create(model: "App\\Book")
+#
+#     updateBook(
+#         id: ID @rules(apply: ["required"])
+#         title: String! @rules(apply: ["required"])
+#         author: String! @rules(apply: ["required"])
+#         image: String
+#         link: String
+#         description: String
+#         featured: Boolean
+#         category: Int!
+#     ): Book @update
+#
+#     deleteBook(
+#         id: ID! @rules(apply: ["required"])
+#     ): Book @delete
+# }
+#
+# type Book {
+#     id: ID!
+#     title: String!
+#     author: String!
+#     image: String
+#     link: String
+#     description: String
+#     featured: Boolean
+#     category: Category! @belongsTo
+# }
+#
+# type Category {
+#     id: ID!
+#     name: String!
+#     books: [Book!]! @hasMany
+# }

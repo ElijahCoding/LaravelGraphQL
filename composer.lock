@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eec8c812eb916c656b55a85623f55b32",
+    "content-hash": "c648ee755103a3d12452cf548725a5d8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -861,6 +861,61 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "joselfonseca/lighthouse-graphql-passport-auth",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joselfonseca/lighthouse-graphql-passport-auth.git",
+                "reference": "35d9180d81bf03e3664b35d62bdbc06a2c5d61d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joselfonseca/lighthouse-graphql-passport-auth/zipball/35d9180d81bf03e3664b35d62bdbc06a2c5d61d1",
+                "reference": "35d9180d81bf03e3664b35d62bdbc06a2c5d61d1",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/passport": "^7.0",
+                "nuwave/lighthouse": "^2.6||^3.0||dev-master",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.8",
+                "phpunit/phpunit": "7.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Joselfonseca\\LighthouseGraphQLPassport\\Providers\\LighthouseGraphQLPassportServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Joselfonseca\\LighthouseGraphQLPassport\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jose Luis Fonseca",
+                    "email": "jose@ditecnologia.com"
+                }
+            ],
+            "description": "Add GraphQL types and mutations for login and recover password functionalities",
+            "keywords": [
+                "graphql",
+                "laravel",
+                "lighthouse",
+                "passport-auth"
+            ],
+            "time": "2019-03-01T21:13:33+00:00"
         },
         {
             "name": "laravel/framework",
